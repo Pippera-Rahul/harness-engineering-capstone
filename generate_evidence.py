@@ -97,7 +97,7 @@ test_file = OUT / "test-results.txt"
 test_text = test_file.read_text(encoding="utf-8") if test_file.exists() else ""
 summary = {
     "test_results_file_present": test_file.exists(),
-    "unittest_reports_31_tests": "Ran 31 tests" in test_text,
+    "unittest_reports_35_tests": "Ran 35 tests" in test_text,
     "unittest_reports_ok": "\nOK" in test_text,
     "note": "Summary is derived from the saved unittest output."
 }

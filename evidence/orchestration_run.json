@@ -1,51 +1,90 @@
 {
-  "status": "failed",
-  "failed_stage": "summarize",
-  "completed": [
-    "intake",
-    "validate"
-  ],
-  "checkpoint": 2,
-  "result_stage_names": [
-    "intake",
-    "validate"
-  ],
+  "status": "completed",
+  "state": {
+    "task": {
+      "workflow": "multi-shift quality monitoring",
+      "shift": "A"
+    },
+    "completed": [
+      "intake",
+      "validate",
+      "analyze",
+      "summarize"
+    ],
+    "results": {
+      "intake": {
+        "batch_id": "SHIFT-2026-10-28-A",
+        "reported_defects": 5
+      },
+      "validate": {
+        "validation": "passed",
+        "records_checked": 5
+      },
+      "analyze": {
+        "sql_filter": "status = 'open' AND severity = 'high'",
+        "matching_count": 2,
+        "defects": [
+          {
+            "id": "D001",
+            "status": "open",
+            "severity": "high",
+            "description": "Scanner intermittently fails"
+          },
+          {
+            "id": "D004",
+            "status": "open",
+            "severity": "high",
+            "description": "Repeated package misrouting"
+          }
+        ]
+      },
+      "summarize": {
+        "summary": "High-severity open defects require follow-up.",
+        "recommended_action": "Assign owners and investigate recurring failures."
+      }
+    },
+    "checkpoint": 4
+  },
   "events": [
     {
       "event": "stage_started",
       "stage": "intake",
-      "index": 1,
-      "error_type": null
+      "index": 1
     },
     {
       "event": "checkpoint_saved",
       "stage": "intake",
-      "index": 1,
-      "error_type": null
+      "index": 1
     },
     {
       "event": "stage_started",
       "stage": "validate",
-      "index": 2,
-      "error_type": null
+      "index": 2
     },
     {
       "event": "checkpoint_saved",
       "stage": "validate",
-      "index": 2,
-      "error_type": null
+      "index": 2
+    },
+    {
+      "event": "stage_started",
+      "stage": "analyze",
+      "index": 3
+    },
+    {
+      "event": "checkpoint_saved",
+      "stage": "analyze",
+      "index": 3
     },
     {
       "event": "stage_started",
       "stage": "summarize",
-      "index": 3,
-      "error_type": null
+      "index": 4
     },
     {
-      "event": "stage_failed",
+      "event": "checkpoint_saved",
       "stage": "summarize",
-      "index": null,
-      "error_type": "RuntimeError"
+      "index": 4
     }
   ]
 }

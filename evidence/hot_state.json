@@ -1,0 +1,49 @@
+{
+  "state": {
+    "task": {
+      "workflow": "multi-shift quality monitoring",
+      "shift": "A"
+    },
+    "completed": [
+      "intake",
+      "validate",
+      "analyze",
+      "summarize"
+    ],
+    "checkpoint": 4,
+    "results": {
+      "intake": {
+        "batch_id": "SHIFT-2026-10-28-A",
+        "reported_defects": 5
+      },
+      "validate": {
+        "validation": "passed",
+        "records_checked": 5
+      },
+      "analyze": {
+        "sql_filter": "status = 'open' AND severity = 'high'",
+        "matching_count": 2,
+        "defects": [
+          {
+            "id": "D001",
+            "status": "open",
+            "severity": "high",
+            "description": "Scanner intermittently fails"
+          },
+          {
+            "id": "D004",
+            "status": "open",
+            "severity": "high",
+            "description": "Repeated package misrouting"
+          }
+        ]
+      },
+      "summarize": {
+        "summary": "High-severity open defects require follow-up.",
+        "recommended_action": "Assign owners and investigate recurring failures."
+      }
+    }
+  },
+  "bytes": 694,
+  "truncated": false
+}

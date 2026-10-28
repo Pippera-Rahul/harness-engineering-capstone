@@ -155,3 +155,65 @@ class OrchestratorTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OrchestratorEnhancementTests(__import__("unittest").TestCase):
+    def test_sql_filter_returns_only_matching_defects(self):
+        from pathlib import Path
+        import importlib.util
+
+        path = Path(__file__).resolve().parents[1] / "system-4-orchestrator" / "orchestrator.py"
+        spec = importlib.util.spec_from_file_location("enhanced_orchestrator", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        defects = [
+            {"id": "D2", "status": "open", "severity": "high"},
+            {"id": "D1", "status": "closed", "severity": "high"},
+            {"id": "D3", "status": "open", "severity": "low"},
+        ]
+        result = module.filter_defects_sql(defects)
+        self.assertEqual([item["id"] for item in result], ["D2"])
+
+    def test_hot_state_stays_within_byte_budget(self):
+        from pathlib import Path
+        import importlib.util
+
+        path = Path(__file__).resolve().parents[1] / "system-4-orchestrator" / "orchestrator.py"
+        spec = importlib.util.spec_from_file_location("enhanced_orchestrator", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        result = module.create_hot_state({
+            "task": "quality review",
+            "completed": ["intake", "validate"],
+            "checkpoint": 2,
+            "results": {"large": "x" * 10000},
+        }, max_bytes=5000)
+        self.assertLessEqual(result["bytes"], 5000)
+
+    def test_stale_checkpoint_requires_fresh_run(self):
+        from pathlib import Path
+        import importlib.util
+
+        path = Path(__file__).resolve().parents[1] / "system-4-orchestrator" / "orchestrator.py"
+        spec = importlib.util.spec_from_file_location("enhanced_orchestrator", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        self.assertTrue(module.should_resume(30, 60))
+        self.assertFalse(module.should_resume(90, 60))
+
+    def test_forked_state_is_isolated(self):
+        from pathlib import Path
+        import importlib.util
+
+        path = Path(__file__).resolve().parents[1] / "system-4-orchestrator" / "orchestrator.py"
+        spec = importlib.util.spec_from_file_location("enhanced_orchestrator", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        original = {"results": {"count": 1}}
+        branch = module.fork_state(original)
+        branch["results"]["count"] = 99
+        self.assertEqual(original["results"]["count"], 1)

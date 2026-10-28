@@ -1,0 +1,18 @@
+{
+  "sql_filter": "status = 'open' AND severity = 'high'",
+  "matching_count": 2,
+  "defects": [
+    {
+      "id": "D001",
+      "status": "open",
+      "severity": "high",
+      "description": "Scanner intermittently fails"
+    },
+    {
+      "id": "D004",
+      "status": "open",
+      "severity": "high",
+      "description": "Repeated package misrouting"
+    }
+  ]
+}

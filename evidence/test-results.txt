@@ -22,6 +22,10 @@ test_negative_budget_rejected (test_capstone.ContextTests) ... ok
 test_priority_order (test_capstone.ContextTests) ... ok
 test_remaining_budget (test_capstone.ContextTests) ... ok
 test_tie_breaks_by_id (test_capstone.ContextTests) ... ok
+test_forked_state_is_isolated (test_capstone.OrchestratorEnhancementTests) ... ok
+test_hot_state_stays_within_byte_budget (test_capstone.OrchestratorEnhancementTests) ... ok
+test_sql_filter_returns_only_matching_defects (test_capstone.OrchestratorEnhancementTests) ... ok
+test_stale_checkpoint_requires_fresh_run (test_capstone.OrchestratorEnhancementTests) ... ok
 test_empty_pipeline_completes (test_capstone.OrchestratorTests) ... ok
 test_events_include_checkpoint (test_capstone.OrchestratorTests) ... ok
 test_failure_is_captured (test_capstone.OrchestratorTests) ... ok
@@ -31,6 +35,6 @@ test_results_are_recorded (test_capstone.OrchestratorTests) ... ok
 test_task_is_preserved (test_capstone.OrchestratorTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 31 tests in 0.002s
+Ran 35 tests in 0.163s
 
 OK
