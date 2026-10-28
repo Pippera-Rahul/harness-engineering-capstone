@@ -1,0 +1,51 @@
+{
+  "status": "failed",
+  "failed_stage": "summarize",
+  "completed": [
+    "intake",
+    "validate"
+  ],
+  "checkpoint": 2,
+  "result_stage_names": [
+    "intake",
+    "validate"
+  ],
+  "events": [
+    {
+      "event": "stage_started",
+      "stage": "intake",
+      "index": 1,
+      "error_type": null
+    },
+    {
+      "event": "checkpoint_saved",
+      "stage": "intake",
+      "index": 1,
+      "error_type": null
+    },
+    {
+      "event": "stage_started",
+      "stage": "validate",
+      "index": 2,
+      "error_type": null
+    },
+    {
+      "event": "checkpoint_saved",
+      "stage": "validate",
+      "index": 2,
+      "error_type": null
+    },
+    {
+      "event": "stage_started",
+      "stage": "summarize",
+      "index": 3,
+      "error_type": null
+    },
+    {
+      "event": "stage_failed",
+      "stage": "summarize",
+      "index": null,
+      "error_type": "RuntimeError"
+    }
+  ]
+}

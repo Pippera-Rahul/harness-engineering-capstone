@@ -1,0 +1,19 @@
+{
+  "trace": [
+    {
+      "stop_reason": "tool_use",
+      "tool_name": "lookup_claim",
+      "tool_input": {
+        "claim_id": "CL-1001"
+      },
+      "content": ""
+    },
+    {
+      "stop_reason": "end_turn",
+      "tool_name": "",
+      "tool_input": {},
+      "content": "Claim lookup completed."
+    }
+  ],
+  "result": "{'status': 'completed', 'answer': 'Claim lookup completed.', 'trace': [{'turn': 1, 'stop_reason': 'tool_use'}, {'turn': 2, 'stop_reason': 'end_turn'}]}"
+}

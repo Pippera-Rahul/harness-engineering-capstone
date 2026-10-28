@@ -1,0 +1,18 @@
+{
+  "selected": [
+    {
+      "id": "claim-summary",
+      "text": "Claim CL-1001: submitted; documents received.",
+      "cost": 45
+    },
+    {
+      "id": "policy-rule",
+      "text": "Verify policy eligibility before approval.",
+      "cost": 42
+    }
+  ],
+  "budget": 100,
+  "used": 87,
+  "remaining": 13,
+  "strategy": "priority_then_id"
+}
