@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-9.2.0, pluggy-1.7.0
+rootdir: /voc/work/cd14715-claude-code-classroom/udacity-harness-reference/Build a Claims Intake Agent with a stop_reason-Driven Loop/exercises/03-dynamic-decomposition/solution
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 30 items
+
+tests/test_antipatterns.py ....                                          [ 13%]
+tests/test_fixtures.py ........                                          [ 40%]
+tests/test_loop.py .....                                                 [ 56%]
+tests/test_run_backstop.py .                                             [ 60%]
+tests/test_tools.py ............                                         [100%]
+
+============================= 30 passed in 12.48s ==============================
+EXIT_CODE=0

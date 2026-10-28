@@ -1,0 +1,19 @@
+run_dir: /voc/work/cd14715-claude-code-classroom/udacity-harness-reference/Build a Claims Intake Agent with a stop_reason-Driven Loop/exercises/03-dynamic-decomposition/solution/runs/20261028_185514
+[claim_01_kitchen_fire] policy=POL-1001 expected=routed
+  → outcome=escalated turns=3 clarifications=0 tokens=9313/489 est=$0.0118
+[claim_02_stolen_bike] policy=POL-1007 expected=routed
+  → outcome=routed turns=5 clarifications=0 tokens=17192/800 est=$0.0212
+[claim_03_water_damage] policy=POL-1004 expected=routed
+  → outcome=escalated turns=5 clarifications=1 tokens=17227/924 est=$0.0218
+[claim_04_neighbor_injury] policy=POL-1002 expected=routed
+  → outcome=routed turns=4 clarifications=0 tokens=14525/885 est=$0.0190
+[claim_05_auto_collision] policy=POL-1003 expected=routed
+  → outcome=routed turns=4 clarifications=0 tokens=15212/985 est=$0.0201
+[claim_06_low_confidence_escalation] policy=POL-1008 expected=escalated
+  → outcome=escalated turns=3 clarifications=0 tokens=9474/639 est=$0.0127
+[claim_07_tree_falls_on_car] policy=POL-1005 expected=routed
+  → outcome=escalated turns=2 clarifications=0 tokens=6199/462 est=$0.0085
+[claim_08_minor_porch_damage] policy=POL-1006 expected=routed
+  → outcome=routed turns=4 clarifications=0 tokens=14118/839 est=$0.0183
+summary: /voc/work/cd14715-claude-code-classroom/udacity-harness-reference/Build a Claims Intake Agent with a stop_reason-Driven Loop/exercises/03-dynamic-decomposition/solution/runs/20261028_185514/summary.md
+total estimated cost: $0.1334

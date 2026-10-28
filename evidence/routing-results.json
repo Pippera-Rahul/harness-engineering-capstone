@@ -1,0 +1,248 @@
+{
+  "source_run": "/voc/work/cd14715-claude-code-classroom/udacity-harness-reference/Build a Claims Intake Agent with a stop_reason-Driven Loop/exercises/03-dynamic-decomposition/solution/runs/20261028_185514",
+  "trace_file": "evidence/stop_reason_trace.jsonl",
+  "claims": [
+    {
+      "claim_id": "claim_01_kitchen_fire",
+      "final_status": "escalated",
+      "source_summary": "official run summary.md",
+      "escalation_evidence": [
+        {
+          "claim_id": "claim_01_kitchen_fire",
+          "policy_id": "POL-1001",
+          "reason": "model ended its turn without a terminal action (deterministic backstop)",
+          "root_cause": "no terminal tool called before end_turn",
+          "candidate_claim_types": [],
+          "case_facts": {
+            "incident_date": "yesterday evening",
+            "location": "kitchen",
+            "description": "grease fire on stove, extinguished with fire extinguisher, charred cabinets above stove, smoke damage on ceiling and walls",
+            "injury_party": "none"
+          },
+          "recommended_action": "human review of the full transcript",
+          "confidence": 0.0,
+          "case_facts_at_escalation": {
+            "incident_date": "yesterday evening",
+            "location": "kitchen",
+            "description": "grease fire on stove, extinguished with fire extinguisher, charred cabinets above stove, smoke damage on ceiling and walls",
+            "injury_party": "none"
+          }
+        }
+      ]
+    },
+    {
+      "claim_id": "claim_02_stolen_bike",
+      "final_status": "routed",
+      "source_summary": "official run summary.md",
+      "queue": [
+        "theft"
+      ]
+    },
+    {
+      "claim_id": "claim_03_water_damage",
+      "final_status": "escalated",
+      "source_summary": "official run summary.md",
+      "escalation_evidence": [
+        {
+          "claim_id": "claim_03_water_damage",
+          "policy_id": "POL-1004",
+          "reason": "model ended its turn without a terminal action (deterministic backstop)",
+          "root_cause": "no terminal tool called before end_turn",
+          "candidate_claim_types": [
+            "property_damage"
+          ],
+          "case_facts": {
+            "incident_type": "basement flooding",
+            "location": "basement",
+            "water_depth": "approximately two inches across entire basement",
+            "damage_description": "hardwood floor buckled, drywall soaked up to one foot high, stored boxes ruined",
+            "discovery": "upon return from work trip",
+            "cause": "burst supply line under upstairs bathroom sink"
+          },
+          "recommended_action": "human review of the full transcript",
+          "confidence": 0.0,
+          "case_facts_at_escalation": {
+            "incident_type": "basement flooding",
+            "location": "basement",
+            "water_depth": "approximately two inches across entire basement",
+            "damage_description": "hardwood floor buckled, drywall soaked up to one foot high, stored boxes ruined",
+            "discovery": "upon return from work trip",
+            "cause": "burst supply line under upstairs bathroom sink"
+          }
+        }
+      ]
+    },
+    {
+      "claim_id": "claim_04_neighbor_injury",
+      "final_status": "routed",
+      "source_summary": "official run summary.md",
+      "queue": [
+        "liability"
+      ]
+    },
+    {
+      "claim_id": "claim_05_auto_collision",
+      "final_status": "routed",
+      "source_summary": "official run summary.md",
+      "queue": [
+        "auto"
+      ]
+    },
+    {
+      "claim_id": "claim_06_low_confidence_escalation",
+      "final_status": "escalated",
+      "source_summary": "official run summary.md",
+      "escalation_evidence": [
+        {
+          "claim_id": "claim_06_low_confidence_escalation",
+          "policy_id": "POL-1008",
+          "reason": "model ended its turn without a terminal action (deterministic backstop)",
+          "root_cause": "no terminal tool called before end_turn",
+          "candidate_claim_types": [],
+          "case_facts": {
+            "incident_date": "overnight during major storm",
+            "location": "policyholder's driveway and property",
+            "description": "storm damage to parked car, garage roof, and fence; uncertain origin of damaging object (possibly tree or neighbor's shed debris)",
+            "emergency_services_present": "yes"
+          },
+          "recommended_action": "human review of the full transcript",
+          "confidence": 0.0,
+          "case_facts_at_escalation": {
+            "incident_date": "overnight during major storm",
+            "location": "policyholder's driveway and property",
+            "description": "storm damage to parked car, garage roof, and fence; uncertain origin of damaging object (possibly tree or neighbor's shed debris)",
+            "emergency_services_present": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "claim_id": "claim_07_tree_falls_on_car",
+      "final_status": "escalated",
+      "source_summary": "official run summary.md",
+      "escalation_evidence": [
+        {
+          "claim_id": "claim_07_tree_falls_on_car",
+          "policy_id": "POL-1005",
+          "reason": "model ended its turn without a terminal action (deterministic backstop)",
+          "root_cause": "no terminal tool called before end_turn",
+          "candidate_claim_types": [],
+          "case_facts": {
+            "incident_date": "last night (wind storm)",
+            "location": "policyholder's driveway, front yard",
+            "description": "maple tree from policyholder's yard fell in wind and landed on parked car",
+            "damage_details": "hood smashed, windshield smashed; tree did not hit house"
+          },
+          "recommended_action": "human review of the full transcript",
+          "confidence": 0.0,
+          "case_facts_at_escalation": {
+            "incident_date": "last night (wind storm)",
+            "location": "policyholder's driveway, front yard",
+            "description": "maple tree from policyholder's yard fell in wind and landed on parked car",
+            "damage_details": "hood smashed, windshield smashed; tree did not hit house"
+          }
+        }
+      ]
+    },
+    {
+      "claim_id": "claim_08_minor_porch_damage",
+      "final_status": "routed",
+      "source_summary": "official run summary.md",
+      "queue": [
+        "property_damage"
+      ]
+    }
+  ],
+  "escalation_records": [
+    {
+      "claim_id": "claim_01_kitchen_fire",
+      "policy_id": "POL-1001",
+      "reason": "model ended its turn without a terminal action (deterministic backstop)",
+      "root_cause": "no terminal tool called before end_turn",
+      "candidate_claim_types": [],
+      "case_facts": {
+        "incident_date": "yesterday evening",
+        "location": "kitchen",
+        "description": "grease fire on stove, extinguished with fire extinguisher, charred cabinets above stove, smoke damage on ceiling and walls",
+        "injury_party": "none"
+      },
+      "recommended_action": "human review of the full transcript",
+      "confidence": 0.0,
+      "case_facts_at_escalation": {
+        "incident_date": "yesterday evening",
+        "location": "kitchen",
+        "description": "grease fire on stove, extinguished with fire extinguisher, charred cabinets above stove, smoke damage on ceiling and walls",
+        "injury_party": "none"
+      }
+    },
+    {
+      "claim_id": "claim_03_water_damage",
+      "policy_id": "POL-1004",
+      "reason": "model ended its turn without a terminal action (deterministic backstop)",
+      "root_cause": "no terminal tool called before end_turn",
+      "candidate_claim_types": [
+        "property_damage"
+      ],
+      "case_facts": {
+        "incident_type": "basement flooding",
+        "location": "basement",
+        "water_depth": "approximately two inches across entire basement",
+        "damage_description": "hardwood floor buckled, drywall soaked up to one foot high, stored boxes ruined",
+        "discovery": "upon return from work trip",
+        "cause": "burst supply line under upstairs bathroom sink"
+      },
+      "recommended_action": "human review of the full transcript",
+      "confidence": 0.0,
+      "case_facts_at_escalation": {
+        "incident_type": "basement flooding",
+        "location": "basement",
+        "water_depth": "approximately two inches across entire basement",
+        "damage_description": "hardwood floor buckled, drywall soaked up to one foot high, stored boxes ruined",
+        "discovery": "upon return from work trip",
+        "cause": "burst supply line under upstairs bathroom sink"
+      }
+    },
+    {
+      "claim_id": "claim_06_low_confidence_escalation",
+      "policy_id": "POL-1008",
+      "reason": "model ended its turn without a terminal action (deterministic backstop)",
+      "root_cause": "no terminal tool called before end_turn",
+      "candidate_claim_types": [],
+      "case_facts": {
+        "incident_date": "overnight during major storm",
+        "location": "policyholder's driveway and property",
+        "description": "storm damage to parked car, garage roof, and fence; uncertain origin of damaging object (possibly tree or neighbor's shed debris)",
+        "emergency_services_present": "yes"
+      },
+      "recommended_action": "human review of the full transcript",
+      "confidence": 0.0,
+      "case_facts_at_escalation": {
+        "incident_date": "overnight during major storm",
+        "location": "policyholder's driveway and property",
+        "description": "storm damage to parked car, garage roof, and fence; uncertain origin of damaging object (possibly tree or neighbor's shed debris)",
+        "emergency_services_present": "yes"
+      }
+    },
+    {
+      "claim_id": "claim_07_tree_falls_on_car",
+      "policy_id": "POL-1005",
+      "reason": "model ended its turn without a terminal action (deterministic backstop)",
+      "root_cause": "no terminal tool called before end_turn",
+      "candidate_claim_types": [],
+      "case_facts": {
+        "incident_date": "last night (wind storm)",
+        "location": "policyholder's driveway, front yard",
+        "description": "maple tree from policyholder's yard fell in wind and landed on parked car",
+        "damage_details": "hood smashed, windshield smashed; tree did not hit house"
+      },
+      "recommended_action": "human review of the full transcript",
+      "confidence": 0.0,
+      "case_facts_at_escalation": {
+        "incident_date": "last night (wind storm)",
+        "location": "policyholder's driveway, front yard",
+        "description": "maple tree from policyholder's yard fell in wind and landed on parked car",
+        "damage_details": "hood smashed, windshield smashed; tree did not hit house"
+      }
+    }
+  ]
+}
