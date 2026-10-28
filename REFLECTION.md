@@ -8,6 +8,8 @@ The submission also contains custom implementations under `system-1-agentic-loop
 
 ## 2. System 1 — Stop-Reason-Driven Agent Loop
 
+Loop termination is decided in `system-1-agentic-loop/agent_loop.py`, inside the `run_agent` function: it continues when `turn.stop_reason == "tool_use"`, returns a completed result when `turn.stop_reason == "end_turn"`, and treats `max_tokens` or unsupported stop reasons as safe non-success outcomes. The loop avoids the anti-pattern of asking the model to self-report completion in natural language instead of using structured `stop_reason` control flow.
+
 The claims-intake agent uses the model's stop reason to distinguish a tool-use response from a normal end of turn. Python code handles the resulting control flow, executes supported tool calls, and enforces a terminal-action backstop. This is more reliable than relying on prompt instructions alone to guarantee that every claim reaches a terminal outcome.
 
 The official test suite recorded 30 passed tests with exit code 0. The official run processed eight claims and recorded four routed outcomes and four escalations. The estimated run cost was $0.1334. The claim-level results and supporting run files are preserved under `evidence/official-runs/system-1/`, with a trace excerpt at `evidence/stop_reason_trace.jsonl` and a summary of outcomes at `evidence/routing-results.json`.
@@ -44,11 +46,19 @@ Deterministic enforcement is appropriate when a requirement must be checked cons
 
 Prompt and configuration guidance remains useful for explaining roles, expected behavior, code conventions, and review procedures. However, instructions such as those in `CLAUDE.md` or a skill file are not equivalent to executable checks. A robust harness combines clear guidance with tests, validators, bounded control flow, observable outcomes, and explicit recovery behavior.
 
+## Cross-Project Layer Map
+
+| Layer | File / artifact | What it demonstrates |
+|---|---|---|
+| Model | `evidence/official-runs/system-1/20261028_185514/traces/claim_02_stolen_bike.jsonl` | The model emits structured `stop_reason` values and tool-call requests. |
+| Harness | `system-1-agentic-loop/agent_loop.py`, function `run_agent` | The harness executes requested tools, records trace entries, continues on `tool_use`, and terminates on `end_turn`. |
+| Orchestration | `system-4-orchestrator/orchestrator.py`, functions `run_pipeline`, `should_resume`, and `fork_state` | The orchestration layer manages stages, checkpoint recovery, and isolated forked state. |
+
 ## 7. Context Efficiency and State Management
 
 The official System 2 run reduced the measured context from 38,708 tokens to 17,039 tokens while passing all six evaluation questions. This provides evidence of context efficiency for that scenario, although it does not establish that the same reduction or answer quality will hold for every conversation.
 
-System 4's saved hot-state file is measured in serialized bytes, whereas System 2's context figures are measured in tokens. These measurements describe different resources and should not be compared as if they were equivalent. Compact persisted workflow state supports recovery and continuity; compact model context supports efficient inference. Both require measurements appropriate to their purpose.
+System 4's saved hot-state file is measured in serialized bytes, whereas System 2's context figures are measured in tokens. These measurements describe different resources and should not be compared as if they were equivalent. The saved `evidence/hot_state.json` artifact reports a serialized size of 694 bytes. Compact persisted workflow state supports recovery and continuity; compact model context supports efficient inference. Both require measurements appropriate to their purpose.
 
 ## 8. Verification Results
 
